@@ -27,7 +27,6 @@ const Login = () => {
       email: email,
       password: password,
     });
-    window.location.href = "/";
   };
 
   return (
@@ -37,10 +36,15 @@ const Login = () => {
       theme={{
         colorScheme: "dark",
         fontFamily: "Roboto",
+        components: {
+          Text: {
+            defaultProps: { color: 'red' },
+          },
+        },
       }}
     >
       <Container size="md" padding="xl" align="center" bg="red">
-        <Text size="xl" weight="bold" color="green">
+        <Text size="xl" weight="bold">
           Login
         </Text>
         <Input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
@@ -49,7 +53,7 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button color="red" mt="lg" variant="filled"
-          onClick={handleLogin}+
+          onClick={handleLogin}
         >
           Login
         </Button>

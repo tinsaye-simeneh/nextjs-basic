@@ -2,17 +2,19 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   MantineProvider,
-  Text,
+  TextInput,
   Button,
-  Container,
   Input,
   Group,
+  Paper,
+  Text,
+  Box,
+  Container,
 } from "@mantine/core";
 import { createClient } from "@supabase/supabase-js";
 import { createApi } from "@reduxjs/toolkit/query";
 
 const Login = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,7 +25,7 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const {data, error} = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
     });
@@ -34,33 +36,75 @@ const Login = () => {
       withGlobalStyles
       withNormalizeCSS
       theme={{
-        colorScheme: "dark",
+        colorScheme: "light",
         fontFamily: "Roboto",
         components: {
+          Container: {
+            defaultProps: {
+              w: "100%",
+              p: {
+                xs: "lg",
+                sm: "xl",
+              },
+             
+            },
+          },
           Text: {
-            defaultProps: { color: 'red' },
+            defaultProps: {
+              size: "xl",
+              weight: "bold",
+              color: "black",
+              td: "underline",
+              mb: {
+                xs: "lg",
+              },
+              mt: {
+                xs: "xl",
+              },
+            },
           },
         },
       }}
     >
-      <Container size="md" padding="xl" align="center" bg="red">
-        <Text size="xl" weight="bold">
-          Login
-        </Text>
-        <Input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-        <Input
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button color="red" mt="lg" variant="filled"
-          onClick={handleLogin}
-        >
-          Login
-        </Button>
-        <Group position="center">
-          <Link href="/account/signup">Register</Link>
-        </Group>
-      </Container>
+      <Box
+      w={{ base: 400, sm: 600, lg: 500 }}
+      py={{ base: 'xs', sm: 'md', lg: 'xl' }}
+      px={{ base: 'xs', sm: 'md', lg: 'xl' }}
+      bg="blue.7"
+      c="#fff"
+      ta="center"
+      mx="auto"
+    >
+        <Paper shadow="sm" radius="lg" p="xl" mb="lg">
+          <Text
+            size="xl"
+            weight="bold"
+            color="black"
+            td="underline"
+            mb="lg"
+            mt="lg"
+          >
+            Login
+          </Text>
+
+          <TextInput
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            mb="lg"
+          />
+          <TextInput
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            mb="lg"
+          />
+          <Button color="red" mt="lg" variant="filled" onClick={handleLogin}>
+            Login
+          </Button>
+          <Group position="center" mt="lg">
+            <Link href="/account/signup">Register</Link>
+          </Group>
+        </Paper>
+      </Box>
     </MantineProvider>
   );
 };

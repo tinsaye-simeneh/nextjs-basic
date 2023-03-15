@@ -1,4 +1,3 @@
-import next from "next";
 import Link from "next/link";
 
 const Login = () => {
@@ -10,7 +9,7 @@ const Login = () => {
       <button>Login</button>
       <p>
         Don't have an account?
-        <Link href="/account/register"> Register</Link>
+        <Link href="/account/register"> Register </Link>
       </p>
 
       <Link href="/" alt="Home page">

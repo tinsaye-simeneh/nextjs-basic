@@ -23,7 +23,7 @@ export default function Home() {
             Welcome to Next.js!
           </Text>
           <Image src="/images/profile.jpg" width={200} height={200} />
-          <Button variant="outline" color="red" mt="lg">
+          <Button color="red" mt="lg" variant="filled">
             {" "}
             Test Button{" "}
           </Button>

@@ -7,6 +7,7 @@ import {
   Image,
   Group,
 } from "@mantine/core";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         theme={{
           colorScheme: "dark",
           fontFamily: "Roboto",
+          textDecoration: "none",
         }}
       >
         <Group position="center">
@@ -29,11 +31,36 @@ export default function Home() {
             <Text size="xl" weight="bold" color="red">
               Welcome to Next.js!
             </Text>
-            <Image src="/images/profile.jpg" width={200} height={200} />
-            <Button color="red" mt="lg" variant="filled">
-              {" "}
-              Test Button{" "}
-            </Button>
+            <Group position="center">
+              <Button color="blue" mt="lg" variant="filled">
+                <Link
+                  color="red"
+                  mt="lg"
+                  variant="filled"
+                  href="/account/login"
+                >
+                  {" "}
+                  Login{" "}
+                </Link>
+              </Button>
+            </Group>
+            <Group position="center">
+              <Button
+                color="green"
+                mt="lg"
+                variant="filled"
+              >
+                 <Link
+                  color="white"
+                  mt="lg"
+                  variant="filled"
+                  href="/account/signup"
+                >
+                {" "}
+                Register{" "}
+                </Link>
+              </Button>
+            </Group>
           </Container>
         </Group>
       </MantineProvider>

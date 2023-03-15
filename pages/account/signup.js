@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useState } from "react";
 import {
   MantineProvider,
   Text,
@@ -7,8 +8,8 @@ import {
   Input,
   Group,
 } from "@mantine/core";
+import { createApi  } from "@reduxjs/toolkit/query";
 import { createClient } from "@supabase/supabase-js";
-import { createApi } from "@reduxjs/toolkit/query";
 
 const Signup = () => {
   const supabase = createClient(
@@ -19,9 +20,9 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    const { user, session, error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email: email,
       password: password,
     });
@@ -45,7 +46,9 @@ const Signup = () => {
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button color="red" mt="lg" variant="filled">
+        <Button color="red" mt="lg" variant="filled" 
+          onClick={handleSignup}
+        >
           Register
         </Button>
         <Group position="center">

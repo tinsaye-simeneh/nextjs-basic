@@ -1,21 +1,33 @@
 import Link from "next/link";
+import { MantineProvider, Text, Button, Container, Input, Group } from "@mantine/core";
+import { createClient } from '@supabase/supabase-js'
 
 const Login = () => {
-  return (
-    <div>
-      <h1>Login</h1>
-      <input type="text" placeholder="Username" />
-      <input type="password" placeholder="Password" />
-      <button>Login</button>
-      <p>
-        Don't have an account?
-        <Link href="/account/register"> Register </Link>
-      </p>
+  const supabase = createClient('https://nextlogin.supabase.co', 'public-anon-key')
 
-      <Link href="/" alt="Home page">
-        Back to Home page
-      </Link>
-    </div>
+  return (
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        colorScheme: "dark",
+        fontFamily: "Roboto",
+      }}
+    >
+      <Container size="md" padding="xl" align="center">
+        <Text size="xl" weight="bold" color="green">
+          Login
+        </Text>
+        <Input placeholder="Email"/>
+        <Input placeholder="Password" />
+        <Button color="red" mt="lg" variant="filled">
+          Login
+        </Button>
+        <Group position="center">
+          <Link href="/account/register">Register</Link>
+        </Group>
+      </Container>
+    </MantineProvider>
   );
 };
 

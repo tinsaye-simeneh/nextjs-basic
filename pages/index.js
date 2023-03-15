@@ -1,11 +1,17 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { MantineProvider, Button, Container, Text, Image } from "@mantine/core";
+import {
+  MantineProvider,
+  Button,
+  Container,
+  Text,
+  Image,
+  Group,
+} from "@mantine/core";
 
 export default function Home() {
   return (
     <>
-      <Head className={styles.container}>
+      <Head>
         <title>Next.js Basic App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -18,16 +24,18 @@ export default function Home() {
           fontFamily: "Roboto",
         }}
       >
-        <Container size="xl" padding="xl" align="center">
-          <Text size="xl" weight="bold" color="red">
-            Welcome to Next.js!
-          </Text>
-          <Image src="/images/profile.jpg" width={200} height={200} />
-          <Button color="red" mt="lg" variant="filled">
-            {" "}
-            Test Button{" "}
-          </Button>
-        </Container>
+        <Group position="center">
+          <Container size="xl" padding="xl" align="center">
+            <Text size="xl" weight="bold" color="red">
+              Welcome to Next.js!
+            </Text>
+            <Image src="/images/profile.jpg" width={200} height={200} />
+            <Button color="red" mt="lg" variant="filled">
+              {" "}
+              Test Button{" "}
+            </Button>
+          </Container>
+        </Group>
       </MantineProvider>
     </>
   );

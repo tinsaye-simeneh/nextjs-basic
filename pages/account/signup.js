@@ -16,12 +16,9 @@ import {
 } from "@mantine/core";
 import { createApi  } from "@reduxjs/toolkit/query";
 import { createClient } from "@supabase/supabase-js";
+import supabase from "../../utilities/supabaseClient";
 
 const Signup = () => {
-  const supabase = createClient(
-    "https://qzjslkpjkpsfzopbtshj.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6anNsa3Bqa3BzZnpvcGJ0c2hqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg4NjYxNjYsImV4cCI6MTk5NDQ0MjE2Nn0.J_9hk9n81eJEDkCUV5BegTM18w4nI1EY-k74kY2GISk"
-  );
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

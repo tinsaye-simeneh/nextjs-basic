@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   MantineProvider,
+  Flex,
   TextInput,
   Button,
   Input,
@@ -9,7 +10,9 @@ import {
   Paper,
   Text,
   Box,
+  Grid,
   Container,
+  Image,
 } from "@mantine/core";
 import { createClient } from "@supabase/supabase-js";
 import { createApi } from "@reduxjs/toolkit/query";
@@ -39,50 +42,62 @@ const Login = () => {
         colorScheme: "light",
         fontFamily: "Roboto",
         components: {
-          Container: {
+          TextInput: {
             defaultProps: {
-              w: "100%",
-              p: {
-                xs: "lg",
-                sm: "xl",
+              radius: "sm",
+              w: {
+                base: "100%",
+                sm: "100%",
+                lg: "100%",
               },
-             
             },
           },
-          Text: {
+          Button: {
             defaultProps: {
-              size: "xl",
-              weight: "bold",
-              color: "black",
-              td: "underline",
-              mb: {
-                xs: "lg",
+              radius: "sm",
+              w: {
+                base: "100%",
+                sm: "100%",
+                lg: "100%",
               },
-              mt: {
-                xs: "xl",
+            },
+          },
+          Box: {
+            defaultProps: {
+              radius: "sm",
+              w: {
+                base: "100%",
+                sm: "100%",
+                lg: "100%",
               },
             },
           },
         },
       }}
     >
-      <Box
-      w={{ base: 400, sm: 600, lg: 500 }}
-      py={{ base: 'xs', sm: 'md', lg: 'xl' }}
-      px={{ base: 'xs', sm: 'md', lg: 'xl' }}
-      bg="blue.7"
-      c="#fff"
-      ta="center"
-      mx="auto"
-    >
-        <Paper shadow="sm" radius="lg" p="xl" mb="lg">
+      <Flex
+        direction={{ base: "column", sm: "row" }}
+        gap={{ base: "sm", sm: "lg" }}
+        justify={{ sm: "center" }}
+        align={{ sm: "center" }}
+        w={{
+          base: "100%",
+          sm: "100%",
+          lg: "90%",
+        }}
+      >
+        <Box>
+          <Image src="/Images/Login.svg" pt={60} fit="cover" />
+        </Box>
+        <Box bg="white" px={{ base: "10%", sm: "10%", lg: "0%" }}>
           <Text
             size="xl"
             weight="bold"
             color="black"
             td="underline"
-            mb="lg"
-            mt="lg"
+            my="10%"
+            mx="auto"
+            align="center"
           >
             Login
           </Text>
@@ -90,21 +105,35 @@ const Login = () => {
           <TextInput
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
+            mx="auto"
             mb="lg"
           />
           <TextInput
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
-            mb="lg"
+            my="5%"
+            mx="auto"
           />
-          <Button color="red" mt="lg" variant="filled" onClick={handleLogin}>
-            Login
-          </Button>
-          <Group position="center" mt="lg">
+          <Group position="center" mt="lg" color="black">
+            <Button
+              href="/account/dashboard"
+              color="orange"
+              mt="lg"
+              mx="auto"
+              align="center"
+              w={500}
+              variant="filled"
+              onClick={handleLogin}
+            >
+              Login
+            </Button>
+          </Group>
+          <Group position="center" mt="lg" color="black">
+            Don't have an account?
             <Link href="/account/signup">Register</Link>
           </Group>
-        </Paper>
-      </Box>
+        </Box>
+      </Flex>
     </MantineProvider>
   );
 };

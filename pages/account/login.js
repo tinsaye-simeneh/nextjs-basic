@@ -28,15 +28,12 @@ const Login = () => {
       email: email,
       password: password,
     });
+    if (error) {
+      console.log(error);
+    } else {
+      window.location.href = "/";
+    }
   };
-
-  useEffect(() => {
-    const userData = async () => {
-      const { data, error } = await supabase.auth.getUser();
-      console.log(data);
-  };
-    userData();
-  }, []);
 
   return (
     <MantineProvider

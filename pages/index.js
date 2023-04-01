@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useEffect } from "react";
 import {
   MantineProvider,
   Button,
@@ -8,8 +9,16 @@ import {
   Group,
 } from "@mantine/core";
 import Link from "next/link";
+import supabase from "../utilities/supabaseClient";
 
 export default function Home() {
+
+  useEffect(() => {
+    const { data, error } = supabase.auth.getUser(
+      localStorage.getItem("supabase.auth.token")
+    )
+  }, []);
+
   return (
     <>
       <Head>
@@ -26,7 +35,7 @@ export default function Home() {
           textDecoration: "none",
         }}
       >
-        Test
+        Home Page
       </MantineProvider>
     </>
   );

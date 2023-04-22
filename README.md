@@ -1,4 +1,4 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn) with Mantine and supabase as a Baas
+(https://nextjs.org/learn) with Mantine and supabase as a Baas
 
 end points:
   - For crud test: /lessons/crud
